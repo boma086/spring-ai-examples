@@ -1,3 +1,10 @@
+# changelog
+spring-ai-examples/ai/ollama-local-setup
+ - 切换模型到codellama
+ - 下载ollama和模型codellama
+ - 修改请求模型到codellama
+ - 修改报错代码create方法
+
 # Spring AI Examples
 
 ## Prerequisites
