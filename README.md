@@ -1,4 +1,4 @@
-# changelog
+# changelog(20250118)
 spring-ai-examples/ai/ollama-local-setup
  - 切换模型到codellama
  - 下载ollama和模型codellama
