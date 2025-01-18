@@ -2,6 +2,7 @@ package com.howtodoinjava.ai.demo;
 
 import java.util.List;
 import javax.swing.Spring;
+
 import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.ollama.OllamaChatModel;
@@ -21,15 +22,15 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class App implements CommandLineRunner {
 
-  public static void main(String[] args) {
-    SpringApplication.run(App.class);
-  }
+    public static void main(String[] args) {
+        SpringApplication.run(App.class);
+    }
 
-  @Autowired
-  OllamaChatModel chatModel;
+    @Autowired
+    OllamaChatModel chatModel;
 
-  @Override
-  public void run(String... args) throws Exception {
+    @Override
+    public void run(String... args) throws Exception {
 
     /*ChatResponse response = chatModel.call(
       new Prompt(
@@ -39,20 +40,20 @@ public class App implements CommandLineRunner {
           .withTemperature(0.4F)
       ));*/
 
-    chatModel.stream(new Prompt(
-      "Generate the names of 5 famous pirates.",
-      OllamaOptions.create()
-        .withModel("gemma2")
-        .withTemperature(0.4F)
-    )).subscribe(chatResponse -> {
-      System.out.print(chatResponse.getResult().getOutput().getContent());
-    });
+        chatModel.stream(new Prompt(
+                "Generate the names of 5 famous pirates.",
+                OllamaOptions.builder()
+                        .model("codellama")
+                        .temperature(0.4)
+                        .build())).subscribe(chatResponse -> {
+            System.out.print(chatResponse.getResult().getOutput().getContent());
+        });
 
     /*response.getResults()
       .stream()
       .map(generation -> generation.getOutput().getContent())
       .forEach(System.out::println);*/
-  }
+    }
 
   /*@Bean
   OllamaChatModel ollamaChatModel(@Value("spring.ai.ollama.base-url") String baseUrl) {
